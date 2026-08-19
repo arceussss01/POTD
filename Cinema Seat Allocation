@@ -2,6 +2,7 @@
 
 
 /** Solution
+/** TC = O(N) + O(10^4)
 
 class Solution {
 public:
