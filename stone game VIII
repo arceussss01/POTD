@@ -1,3 +1,21 @@
+// recursion -- did not pass one test case
+
+    int solve(int i, vector<int>&prefixSum){
+        if(i == n-1){
+            return prefixSum[n-1];
+        }
+
+        if(t[i] != -1){
+            return t[i];
+        }
+
+        int take = prefixSum[i] - solve(i+1, prefixSum);
+        int skip = solve(i+1, prefixSum);
+
+        return t[i] = max(take, skip);
+    }
+
+
 // bottom up solution
 int stoneGameVIII(vector<int>& stones) {
         int n = stones.size();
