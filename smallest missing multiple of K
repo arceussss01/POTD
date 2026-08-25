@@ -13,3 +13,25 @@ public:
         return multiple;
     }
 };
+
+// index mapping
+class Solution {
+public:
+    int missingMultiple(vector<int>& nums, int k) {
+        int n = nums.size();
+        vector<bool>seen(101, false);
+
+        for(int num : nums){
+            if(num % k == 0){
+                seen[num/k] = true;
+            }
+        }
+
+        for(int i=1; ; i++){
+            if(!seen[i]){
+                return i * k;
+            }
+        }
+    return -1;
+    }
+};
