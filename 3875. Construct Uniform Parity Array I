@@ -1,0 +1,23 @@
+Intuition
+We only need to consider the parity of each element.
+
+Equal parities produce an even difference.
+Different parities produce an odd difference:
+  1. even−even = even
+  2. odd−odd = even
+
+​      even−odd = odd
+      odd−even = odd
+
+Answer would always be true
+
+class Solution {
+public:
+    bool uniformArray(vector<int>& nums1) {
+        return true;
+    }
+};
+​
+
+​
+ 
