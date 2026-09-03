@@ -3,13 +3,13 @@ public:
     bool uniformArray(vector<int>& nums1) {
         int minEl = *min_element(begin(nums1), end(nums1));
         
-        if(minEl % 2 == 1){
-            return true;
+        if(minEl % 2 == 1){ // odd - then we can convert all even to odd
+            return true; // num2 will have odd
         }
 
         for(int &it : nums1){
-            if(it % 2 == 1){
-                return false;
+            if(it % 2 == 1){ // check all are even 
+                return false; // if even one is not even then return false
             }
         }
     return true;
