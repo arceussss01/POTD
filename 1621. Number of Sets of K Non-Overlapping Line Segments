@@ -28,3 +28,25 @@ public:
         return solve(n, k, 0);
     }
 };
+
+
+// this will also give TLE
+int numberOfSets(int n, int k) {
+        // base case
+        for(int i=0; i <= n-1; i++){
+            dp[0][i] = 1;
+        }
+
+        for(int K=1; K <= k; K++){
+            for(int i=n-1; i >= 0; i--){
+                long long take = 0;
+                for(int j=i+1; j <= n-1; j++){
+                    take = (take + dp[K-1][j]) % M;
+                }
+
+                int skip = dp[K][i+1] % M;
+                dp[K][i] = (take + skip) % M;
+            }
+        }
+    return dp[k][0];
+    }
