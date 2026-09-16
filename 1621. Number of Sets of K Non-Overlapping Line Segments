@@ -50,3 +50,51 @@ int numberOfSets(int n, int k) {
         }
     return dp[k][0];
     }
+
+
+// Runs 
+class Solution {
+public:
+    int M = 1e9 + 7;
+    int dp[1001][1001];
+
+    // int solve(int n, int k, int i){
+    //     if(k == 0) return 1;
+    //     if(i >= n) return 0;
+
+    //     if(t[k][i] != -1){
+    //         return t[k][i];
+    //     }
+
+    //     long long take = 0; // start segment from ith point
+    //     for(int j=i+1; j <= n-1; j++){
+    //         take = (take + solve(n, k-1, j)) % M;
+    //     }
+
+    //     long long skip = solve(n, k, i+1) % M;
+
+    //     return t[k][i] = (skip + take);
+    // }
+
+    int numberOfSets(int n, int k) {
+        // base case
+        for(int i=0; i <= n-1; i++){
+            dp[0][i] = 1;
+        }
+
+        for(int K=1; K <= k; K++){
+
+            vector<int>prevRowSum(n+1, 0);
+            for(int x = n-1; x >= 0; x--){
+                prevRowSum[x] = (prevRowSum[x+1] + dp[K-1][x]) % M;
+            }
+
+            for(int i=n-1; i >= 0; i--){
+                int take = prevRowSum[i+1];
+                int skip = dp[K][i+1] % M;
+                dp[K][i] = (take + skip) % M;
+            }
+        }
+    return dp[k][0];
+    }
+};
