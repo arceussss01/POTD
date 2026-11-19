@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int minimizeSum(vector<int>& nums) {
+        int small1 = INT_MAX, small2 = INT_MAX, small3 = INT_MAX;
+        int large1 = 0, large2 = 0, large3 = 0;
+
+        for(auto it : nums){
+            if(it < small1){
+                small3 = small2;
+                small2 = small1;
+                small1 = it;
+            } else if(it < small2){
+                small3 = small2;
+                small2 = it;
+            } else if(it < small3){
+                small3 = it;
+            }
+
+            if(it > large1){
+                large3 = large2;
+                large2 = large1;
+                large1 = it;
+            } else if(it > large2){
+                large3 = large2;
+                large2 = it;
+            } else if(it > large3){
+                large3 = it;
+            }
+        }
+
+    return min({large1 - small3, large3 - small1, large2 - small2});
+    }
+};
