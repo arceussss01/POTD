@@ -1,0 +1,8 @@
+class Solution {
+public:
+    bool checkString(string s) {
+    bool result = s.find("ba") == std::string::npos;
+
+    return result;
+    }
+};
