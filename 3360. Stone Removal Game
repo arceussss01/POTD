@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool canAliceWin(int n) {
+        int temp = n;
+        int count = 0;
+        if(n < 10) return false;
+        int steps = 10;
+        temp -= steps;
+        count++;
+        steps = steps - 1;
+        while(temp > 0){
+            if(temp < steps){
+                return (count % 2 == 0) ? false : true;
+            }
+            temp -= steps;
+            steps = steps - 1;
+            count++;
+        }
+    return (count % 2 == 0) ? false : true;
+    }
+};
